@@ -19,6 +19,7 @@ navbar-links:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
   Blog: "https://deanattali.com"
+  Contact Me: "aboutme"
 
 # --- Logo --- #
 
@@ -104,11 +105,11 @@ navbar-text-col: "#FF6902"
 navbar-border-col: "#001829"
 page-col: "#FFFFFF"
 text-col: "#404040"
-link-col: "#008AFF"
-hover-col: "#0085A1"
+link-col: "#FF6902"
+hover-col: "#ffa160"
 footer-col: "#003153"
 footer-text-col: "#FF6902"
-footer-link-col: "#404040"
+footer-link-col: "#FF6902"
 
 # Alternatively, the navbar, footer, and page background can be set to an image
 # instead of colour
