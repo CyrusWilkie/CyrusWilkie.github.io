@@ -15,11 +15,9 @@ author: Cyrus Wilkie
 
 navbar-links:
   About Me: "aboutme"
-  Projects:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
+  Projects: "projects"
   Blog: "https://deanattali.com"
-  Contact Me: "aboutme"
+  Contact Me: "contactme"
 
 # --- Logo --- #
 
