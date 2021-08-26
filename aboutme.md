@@ -4,7 +4,11 @@ title: About me
 subtitle: The making of a legend
 ---
 
+<<<<<<< HEAD
 Currently a casual academic at the University of New South Wales teaching Computer Systems Fundamentals. I have experience teaching groups of up to 25 University students basic computer science concepts both online and in person.
+=======
+@icn-camera Currently a casual academic at the University of New South Wales teaching Computer Systems Fundamentals. I have experience teaching groups of up to 25 University students basic computer science concepts both online and in person.
+>>>>>>> b81287c04441e1c890186899e379af31c0fa50de
 
 Currently in my second year of studying a Bachelor of Computer Science with a major in Information Security at the University of New South Wales, Sydney.
 
