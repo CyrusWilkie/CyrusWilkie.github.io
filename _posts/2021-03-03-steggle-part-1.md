@@ -4,6 +4,7 @@ title: Steggle Development Part 1
 subtitle: Exploring PNGs
 gh-repo: CyrusWilkie/steggle
 gh-badge: [star, fork, follow]
+thumbnail-img: /assets/img/steggle-p1-1.JPG
 tags: [steggle, dev]
 comments: true
 ---
