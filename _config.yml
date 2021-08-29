@@ -14,7 +14,7 @@ author: Cyrus Wilkie
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  Blog: ""
+  Blog: "index"
   About Me: "aboutme"
   Projects: "projects"
   Contact Me: "contactme"
