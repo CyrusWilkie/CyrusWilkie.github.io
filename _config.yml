@@ -14,9 +14,9 @@ author: Cyrus Wilkie
 # --- List of links in the navigation bar --- #
 
 navbar-links:
+  Blog: ""
   About Me: "aboutme"
   Projects: "projects"
-  Blog: "https://deanattali.com"
   Contact Me: "contactme"
 
 # --- Logo --- #
