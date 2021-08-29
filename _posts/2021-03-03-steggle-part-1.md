@@ -2,7 +2,7 @@
 layout: post
 title: Steggle Development Part 1
 subtitle: Exploring PNGs
-gh-repo: daattali/beautiful-jekyll
+gh-repo: CyrusWilkie/steggle
 gh-badge: [star, fork, follow]
 tags: [steggle, dev]
 comments: true
