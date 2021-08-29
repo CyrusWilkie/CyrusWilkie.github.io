@@ -4,6 +4,7 @@ title: Steggle Development Part 5
 subtitle: Implementing Read
 gh-repo: CyrusWilkie/steggle
 gh-badge: [star, fork, follow]
+thumbnail-img: /assets/img/steggle5/readdiagram.png
 tags: [steggle, dev]
 comments: true
 ---

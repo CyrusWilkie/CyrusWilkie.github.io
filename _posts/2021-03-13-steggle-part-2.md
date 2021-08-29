@@ -4,6 +4,7 @@ title: Steggle Development Part 2
 subtitle: Exploring Steganography
 gh-repo: CyrusWilkie/steggle
 gh-badge: [star, fork, follow]
+thumbnail-img: /assets/img/steggle-p2-1.png
 tags: [steggle, dev]
 comments: true
 ---

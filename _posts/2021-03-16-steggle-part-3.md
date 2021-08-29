@@ -4,6 +4,7 @@ title: Steggle Development Part 3
 subtitle: Image Manipulation
 gh-repo: CyrusWilkie/steggle
 gh-badge: [star, fork, follow]
+thumbnail-img: /assets/img/steggle3/python_output2.png
 tags: [steggle, dev]
 comments: true
 ---

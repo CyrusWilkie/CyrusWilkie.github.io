@@ -4,6 +4,7 @@ title: Steggle Development Part 4
 subtitle: Implementing Write
 gh-repo: CyrusWilkie/steggle
 gh-badge: [star, fork, follow]
+thumbnail-img: /assets/img/steggle4/diagram.png
 tags: [steggle, dev]
 comments: true
 ---
