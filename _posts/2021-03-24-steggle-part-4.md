@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Steggle Development Part 3
+title: Steggle Development Part 4
 subtitle: Implementing Write
 gh-repo: CyrusWilkie/steggle
 gh-badge: [star, fork, follow]
