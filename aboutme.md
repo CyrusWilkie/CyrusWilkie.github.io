@@ -10,7 +10,7 @@ css: "/assets/css/aboutme.css"
 
 <p class="about-text">
 <span class="fa fa-briefcase about-icon"></span>
-Currently a casual academic at the University of New South Wales teaching Computer Systems Fundamentals. I have experience teaching groups of up to 25 University students basic computer science concepts both online and in person.
+Currently a casual academic at the University of New South Wales teaching Computer Systems Fundamentals. I have experience teaching groups of up to 25 University students basic computer science concepts both online and in person. Looking to start a career in information security, with an aim to secure a pen-testing or consulting role.
 </p>
 
 <p class="about-text">
@@ -25,15 +25,10 @@ Proficient in Python, C, Java and, most importantly, MIPS Assembly. Some limited
 
 <p class="about-text">
 <span class="fa fa-heart about-icon"></span>
-I am deeply interested in the security and networking side of Computer Science and enjoy working on projects that delve into these areas, I'm also very keen on experimenting with processes for designing and developing the programs I write. You can find some of my most recent personal projects on my [projects page](/projects).
-</p>
-
-<p class="about-text">
-<span class="fas fa-binoculars"></span>
-Looking to start a career in information security, with an aim to secure a pen-testing or consulting role.
+I am deeply interested in the security and networking side of Computer Science and enjoy working on projects that delve into these areas, I'm also very keen on experimenting with processes for designing and developing the programs I write. You can find some of my most recent personal projects on my <a href="/project">projects page</a>.
 </p>
 
 <p class="about-text">
 <span class="fa fa-file-alt about-icon"></span>
-You can find a (slightly redacted) copy of my [resume here](/resume), if you want to get in contact with me you can find a few ways to do that on the [contact page](/contactme).
+You can find a (slightly redacted) copy of my <a href="/resume">resume here</a>, if you want to get in contact with me you can find a few ways to do that on the <a href="/contactme">contact page</a>.
 </p>
