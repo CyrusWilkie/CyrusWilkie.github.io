@@ -15,8 +15,8 @@ author: Cyrus Wilkie
 
 navbar-links:
   Blog:
-    Recent: "index"
-    Tags: "tags"
+    - Recent: "index"
+    - Tags: "tags"
   About Me: "aboutme"
   Projects: "projects"
   Contact Me: "contactme"
