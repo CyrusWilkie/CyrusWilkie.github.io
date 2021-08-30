@@ -11,6 +11,14 @@ There are a number of ways you can get in touch, the best way would be to shoot 
 
 Feel free to get in touch with me about any of my projects, as someone who is looking to get into infosec I am also very open to any enquiries relating to experience or employment in this field.
 
+<i class="fas fa-envelope"></i> [Email](cyrus.wilkie@gmail.com)
+
+<i class="fab fa-linkedin"></i> [LinkedIn](https://www.linkedin.com/in/cyrus-wilkie-07a78b187)
+
+<i class="fab fa-twitter-square"></i> [Twitter](https://twitter.com/CyrusWilkie)
+
+<i class="fab fa-telegram"></i> [Telegram](https://t.me/CyrusWilkie)
+
 # Verify It's Me
 
 This is where my public PGP key will go when I finally get around to setting one up.
