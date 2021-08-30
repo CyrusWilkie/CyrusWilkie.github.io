@@ -8,6 +8,7 @@ cover-img: "assets/img/aboutimg.jpg"
 # Who am I?
 
 Currently a casual academic at the University of New South Wales teaching Computer Systems Fundamentals. I have experience teaching groups of up to 25 University students basic computer science concepts both online and in person.
+
 <span class="fa fa-graduation-cap about-icon"></span>
 Currently in my second year of studying a Bachelor of Computer Science with a major in Information Security at the University of New South Wales, Sydney.
 
