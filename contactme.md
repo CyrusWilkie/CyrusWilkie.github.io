@@ -2,6 +2,7 @@
 layout: page
 title: Contact me
 subtitle: How to get in touch
+cover-img: "assets/img/contact.png"
 ---
 
 # The Basics
