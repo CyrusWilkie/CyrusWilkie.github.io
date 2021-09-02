@@ -53,7 +53,7 @@ section#timeline article div.inner span.date {
   text-transform: uppercase;
   background: #25303B;
   color: rgba(255,255,255,0.5);
-  border: 2px solid rgba(255,255,255,0.2);
+  border: 2px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 0 7px #25303B;
 }
 section#timeline article div.inner span.date span {
@@ -92,8 +92,8 @@ section#timeline article div.inner p {
   padding: 15px;
   margin: 0;
   font-size: 14px;
-  background: #fff;
-  color: #656565;
+  background: rgb(0, 0, 0);
+  color: #000000;
   border-radius: 0 0 6px 6px;
 }
 section#timeline article:nth-child(2n+2) div.inner {
