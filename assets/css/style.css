@@ -62,7 +62,7 @@ section#timeline article div.inner span.date span.year {
 section#timeline article div.inner h2 {
   padding: 15px;
   margin: 0;
-  color: #fff;
+  color: rgb(0, 0, 0);
   font-size: 20px;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -82,7 +82,7 @@ section#timeline article div.inner p {
   padding: 15px;
   margin: 0;
   font-size: 14px;
-  background: #fff;
+  background: rgb(0, 0, 0);
   color: #656565;
   border-radius: 0 0 6px 6px;
 }
