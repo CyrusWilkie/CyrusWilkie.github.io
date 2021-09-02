@@ -242,7 +242,7 @@ SETTINGS
 DEMO
 =====
 */
-
+/*
 p{
   margin-top: 0;
   margin-bottom: 1rem;
@@ -252,7 +252,7 @@ p{
 p:last-child{
   margin-bottom: 0;
 }
-
+*/
 .page{
   max-width: 47rem;
   padding: 5rem 2rem 3rem;
