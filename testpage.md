@@ -10,7 +10,6 @@ css: "/assets/css/style.css"
   <article>
     <div class="inner">
       <span class="date">
-        <span class="day">30<sup>th</sup></span>
         <span class="month">Jan</span>
         <span class="year">2014</span>
       </span>
@@ -21,7 +20,6 @@ css: "/assets/css/style.css"
   <article>
     <div class="inner">
       <span class="date">
-        <span class="day">26<sup>th</sup></span>
         <span class="month">Jan</span>
         <span class="year">2014</span>
       </span>
@@ -32,7 +30,6 @@ css: "/assets/css/style.css"
   <article>
     <div class="inner">
       <span class="date">
-        <span class="day">26<sup>th</sup></span>
         <span class="month">Jan</span>
         <span class="year">2014</span>
       </span>
@@ -43,7 +40,6 @@ css: "/assets/css/style.css"
   <article>
     <div class="inner">
       <span class="date">
-        <span class="day">26<sup>th</sup></span>
         <span class="month">Jan</span>
         <span class="year">2014</span>
       </span>
