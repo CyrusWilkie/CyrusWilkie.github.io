@@ -6,56 +6,67 @@ cover-img: "assets/img/aboutimg.jpg"
 css: "/assets/css/style.css"
 ---
 
-<section id="timeline">
-  <article>
-    <div class="inner">
-      <span class="date">
-        <span class="month">Jan</span>
-        <span class="year">2014</span>
-      </span>
-      <h2>The Title</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis rutrum nunc, eget dictum massa. Nam faucibus felis nec augue adipiscing, eget commodo libero mattis.</p>
+<div class="page">
+  <div class="timeline">
+    <div class="timeline__group">
+      <span class="timeline__year time" aria-hidden="true">2008</span>
+      <div class="timeline__cards">
+        <div class="timeline__card card">
+          <header class="card__header">
+            <time class="time" datetime="2008-02-02">
+              <span class="time__day">2</span>
+              <span class="time__month">Feb</span>
+            </time>
+          </header>
+          <div class="card__content">
+            <p>Attends the Philadelphia Museum School of Industrial Art. Studies design with Alexey Brodovitch, art director at Harper's Bazaar, and works as his assistant.</p>
+          </div>
+        </div>
+        <div class="timeline__card card">
+          <header class="card__header">
+            <time class="time" datetime="2008-09-01">
+              <span class="time__day">1</span>
+              <span class="time__month">Sept</span>
+            </time>
+            <h3 class="card__title r-title">The part of my life in University of Pennsylvania</h3>
+          </header>
+          <div class="card__content">
+            <p>Started from University of Pennsylvania. This is an important stage of my career. Here I worked in the local magazine. The experience greatly affected me</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </article>
-  <article>
-    <div class="inner">
-      <span class="date">
-        <span class="month">Jan</span>
-        <span class="year">2014</span>
-      </span>
-      <h2>The Title</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis rutrum nunc, eget dictum massa. Nam faucibus felis nec augue adipiscing, eget commodo libero mattis.</p>
+    <div class="timeline__group">
+      <span class="timeline__year time" aria-hidden="true">2014</span>
+      <div class="timeline__cards">
+        <div class="timeline__card card">
+          <header class="card__header">
+            <time class="time" datetime="2008-07-14">
+              <span class="time__day">14</span>
+              <span class="time__month">Jul</span>
+            </time>
+          </header>
+          <div class="card__content">
+            <p>Travels to France, Italy, Spain, and Peru. After completing fashion editorial in Lima, prolongs stay to make portraits of local people in a daylight studio</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </article>
-  <article>
-    <div class="inner">
-      <span class="date">
-        <span class="month">Jan</span>
-        <span class="year">2014</span>
-      </span>
-      <h2>The Title</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis rutrum nunc, eget dictum massa. Nam faucibus felis nec augue adipiscing, eget commodo libero mattis.</p>
+    <div class="timeline__group">
+      <span class="timeline__year time" aria-hidden="true">2016</span>
+      <div class="timeline__cards">
+        <div class="timeline__card card">
+          <header class="card__header">
+            <time class="time" datetime="2008-08-18">
+              <span class="time__day">28</span>
+              <span class="time__month">Aug</span>
+            </time>          
+          </header>
+          <div class="card__content">
+            <p>Upon moving to Brooklyn that summer, I began photographing weddings in Chicago</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </article>
-  <article>
-    <div class="inner">
-      <span class="date">
-        <span class="month">Jan</span>
-        <span class="year">2014</span>
-      </span>
-      <h2>The Title</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis rutrum nunc, eget dictum massa. Nam faucibus felis nec augue adipiscing, eget commodo libero mattis.</p>
-    </div>
-  </article>
-  <article>
-    <div class="inner">
-      <span class="date">
-        <span class="day">26<sup>th</sup></span>
-        <span class="month">Jan</span>
-        <span class="year">2014</span>
-      </span>
-      <h2>The Title</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis rutrum nunc, eget dictum massa. Nam faucibus felis nec augue adipiscing, eget commodo libero mattis.</p>
-    </div>
-  </article>
-</section>
+  </div>
+</div>
