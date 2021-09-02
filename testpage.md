@@ -3,7 +3,7 @@ layout: page
 title: About me
 subtitle: The real guy, the best guy
 cover-img: "assets/img/aboutimg.jpg"
-css: "/assets/css/style.less"
+css: "/assets/css/style.css"
 ---
 
 <div id="timeline-content">
