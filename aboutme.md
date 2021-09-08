@@ -75,7 +75,7 @@ You can find a (slightly redacted) copy of my <a href="/resume">resume here</a>,
             <h3 class="card__title r-title"> Data Entry Operator - Jannali Covid Testing Clinic</h3>
           </header>
           <div class="card__content">
-            <p>Worked at the Jannali Drive-Thru Covid-19 testing clinic during the Covid-19 pandemic. My resposibilities inlcuded collecting information from students upon their arrival to the clinic, entering information into the patient records of Jannali Doctors and coordinating with Laverty Pathology collectors, particularly providing orientation to collector who were new to the clinic.</p>
+            <p>Worked at the Jannali Drive-Thru Covid-19 testing clinic during the Covid-19 pandemic. My resposibilities inlcuded collecting information from patients upon their arrival to the clinic, entering information into the patient records of Jannali Doctors and coordinating with Laverty Pathology collectors, particularly providing orientation to collectors who were new to the clinic.</p>
           </div>
         </div>
       </div>
@@ -91,7 +91,7 @@ You can find a (slightly redacted) copy of my <a href="/resume">resume here</a>,
             <h3 class="card__title r-title"> Casual Academic - UNSW</h3>        
           </header>
           <div class="card__content">
-            <p>Currently working as a tutor for UNSW CSE, teaching classes of up to 25 University students both online and in person. Have tutored COMP1521 - Computer Systems Fundamentals and DPST1091, a COMP1521 equivalent offered to international students.</p>
+            <p>Currently working as a tutor for UNSW CSE, teaching classes of up to 25 University students both online and in person. Have tutored COMP1521 - Computer Systems Fundamentals and DPST1092, a COMP1521 equivalent offered to international students.</p>
           </div>
         </div>
       </div>
