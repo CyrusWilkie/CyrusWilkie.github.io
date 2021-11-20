@@ -25,7 +25,7 @@ Proficient in Python, C, Java and, most importantly, MIPS Assembly. Some limited
 
 <p class="about-text">
 <span class="fa fa-heart about-icon"></span>
-I am deeply interested in the security and networking side of Computer Science and enjoy working on projects that delve into these areas, I'm also very keen on experimenting with processes for designing and developing the programs I write. You can find some of my most recent personal projects on my <a href="/project">projects page</a>.
+I am deeply interested in the security and networking side of Computer Science and enjoy working on projects that delve into these areas, I'm also very keen on experimenting with processes for designing and developing the programs I write. You can find some of my most recent personal projects on my <a href="/projects">projects page</a>.
 </p>
 
 <p class="about-text">
