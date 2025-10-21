@@ -1,0 +1,10 @@
+baseURL = "https://your-username.github.io/"   # update if using project pages
+languageCode = "en-us"
+title = "Cyrus Wilkie's Blog"
+theme = "PaperMod"
+
+# Minimal PaperMod options (you can customize more later)
+[params]
+  subtitle = "Security research & writeups"
+  author = "Cyrus Wilkie"
+  github = "https://github.com/CyrusWilkie"
