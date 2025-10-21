@@ -1,4 +1,4 @@
-name: Build and deploy Hugo site to gh-pages
+name: Deploy Hugo site to GitHub Pages
 
 on:
   push:
@@ -7,36 +7,27 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: true  # important: fetch theme submodule
+          submodules: true  # fetch theme
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.115.0'   # or latest stable version
+          hugo-version: 'latest'
 
       - name: Build
         run: hugo --minify
 
-      - name: Deploy to gh-pages
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
-          publish_dir: ./public
-          publish_branch: gh-pages
-          keep_files: false
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Enable GitHub Pages (optional)
-        uses: crazy-max/ghaction-github-pages@v1
-        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
