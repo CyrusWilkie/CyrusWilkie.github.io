@@ -1,4 +1,4 @@
-baseURL = "https://your-username.github.io/"   # update if using project pages
+baseURL = "https://cyruswilkie.github.io/"   # update if using project pages
 languageCode = "en-us"
 title = "Cyrus Wilkie's Blog"
 theme = "PaperMod"
