@@ -1,5 +1,5 @@
 /* ==========================================================================
-   byte & dune — site stylesheet
+   Karo0 — site stylesheet
    --------------------------------------------------------------------------
    COLOUR SYSTEM
    Two signature anchors recur everywhere:
@@ -130,7 +130,7 @@ a:hover { text-decoration: underline; }
 }
 .brand:hover { text-decoration: none; }
 .brand-mark { color: var(--burnt-soft); }
-.brand .amp { color: var(--section-accent); }
+.brand-accent { color: var(--section-accent); }
 
 .site-nav ul {
   display: flex;

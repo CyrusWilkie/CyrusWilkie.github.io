@@ -1,4 +1,4 @@
-// byte & dune — interactive behaviour
+// Karo0 — interactive behaviour
 (function () {
   "use strict";
 

@@ -1,4 +1,4 @@
-# byte & dune
+# Karo0
 
 A static cybersecurity blog built with [Hugo](https://gohugo.io/), searched with
 [Pagefind](https://pagefind.app/), and deployed to

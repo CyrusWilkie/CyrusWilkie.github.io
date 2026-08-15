@@ -2,7 +2,7 @@
 # If your GitHub username isn't "cyruswilkie", change this to match your repo.
 baseURL = "https://cyruswilkie.github.io/"
 languageCode = "en-AU"
-title = "byte & dune"
+title = "Karo0"
 enableRobotsTXT = true
 
 [params]

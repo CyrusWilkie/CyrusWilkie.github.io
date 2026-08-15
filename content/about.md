@@ -1,18 +1,18 @@
 ---
 title: "About"
 layout: about
-description: "Who runs byte & dune."
+description: "Who runs Karo0."
 handle: "cyrus"
-role: "Security analyst & home-lab tinkerer"
+role: "Penetration tester & home-lab tinkerer"
 badges:
-  - "Blue team"
-  - "CTF player"
-  - "Homelab"
-  - "OSCP (in progress)"
+  - "OSCP"
+  - "CRTO"
+  - "CPSA"
+  - "CRT"
 contacts:
   - icon: email
-    label: "cyrus.wilkie@gmail.com"
-    url: "mailto:cyrus.wilkie@gmail.com"
+    label: "cyrus.wilkie1@proton.me"
+    url: "mailto:cyrus.wilkie1@proton.me"
   - icon: github
     label: "github.com/cyruswilkie"
     url: "https://github.com/cyruswilkie"
@@ -21,6 +21,6 @@ contacts:
     url: "/pgp.asc"
 ---
 
-I work in security operations by day and break things in a rack in the garage by night. This site is where the write-ups land: incident-response walkthroughs, CTF solutions once competitions close, and notes from a home lab that has long since outgrown its shelf.
+Hello! I'm Cyrus, a penetration tester who has been working in the industry for around 3 years now. I'm generally interested in all things cyber and self hosting, feel free to get in touch!
 
-Everything here is written for my future self first — if it helps you too, even better.
+I use this blog as a bit of a future reference for projects I've completed in the past, everything here is written primarily for my own benefit and published in the hopes that it may be of some small interest to others.
