@@ -6,4 +6,4 @@ description: "Capture-the-flag write-ups: web, forensics, pwn, crypto."
 filterable: true
 ---
 
-Write-ups published after the flags stop counting. Filter by category below.
+Various write ups from the rare occaisions when I'm both bothered to do a CTF AND write it up.

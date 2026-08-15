@@ -2,7 +2,7 @@
 title: "Home Lab"
 label: "Home lab"
 eyebrow: "[workshop]"
-description: "Racks, VLANs, hypervisors and self-hosted services."
+description: "VLANs, hypervisors and self-hosted services."
 ---
 
-The rack in the garage: what runs on it, what broke, and what I rebuilt anyway.
+General documentation of my home lab, a tale of one man's battle with stress induced male pattern baldness.
