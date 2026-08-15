@@ -1,7 +1,7 @@
 # Local development and production build.
 # Pagefind is fetched via npx on first run; no package.json needed.
 
-.PHONY: dev build clean docker
+.PHONY: dev build clean
 
 dev:
 	hugo server -D
@@ -12,6 +12,3 @@ build:
 
 clean:
 	rm -rf public resources/_gen .hugo_build.lock
-
-docker:
-	docker compose up -d --build

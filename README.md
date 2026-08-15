@@ -1,11 +1,11 @@
 # byte & dune
 
 A static cybersecurity blog built with [Hugo](https://gohugo.io/), searched with
-[Pagefind](https://pagefind.app/), and served from a home lab behind
-[Pangolin](https://github.com/fosrl/pangolin) via a Caddy container.
+[Pagefind](https://pagefind.app/), and deployed to
+[GitHub Pages](https://pages.github.com/) via GitHub Actions.
 
 Content is Markdown + YAML front matter. No database, no CMS, no server-side
-runtime — just files, a build step, and a static server.
+runtime — just files, a build step, and a static host.
 
 ---
 
@@ -15,7 +15,6 @@ runtime — just files, a build step, and a static server.
   required for asset processing/minification.
 - **Node** (only for Pagefind, which is run via `npx`; nothing is installed
   globally).
-- **Docker** + Docker Compose for the production container.
 
 ## Local development
 
@@ -67,26 +66,25 @@ make build      # hugo --minify  +  npx pagefind --site public
 Output lands in `public/`. The `pagefind/` search index is written there too.
 `public/` is git-ignored — it's a build artifact.
 
-## Deploying (Docker + Caddy)
+## Deploying (GitHub Pages)
+
+Deployment is fully automated by
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). On every push to
+`master`, GitHub Actions:
+
+1. installs Hugo extended and builds the site (`hugo --minify --gc`),
+2. generates the Pagefind search index (`npx pagefind --site public`), and
+3. publishes `public/` to GitHub Pages.
+
+So publishing is just:
 
 ```bash
-make docker     # docker compose up -d --build
+git push          # → triggers the workflow → live at the Pages URL
 ```
 
-The multi-stage [`Dockerfile`](Dockerfile) builds the Hugo site and Pagefind
-index, then copies `public/` into a Caddy image.
-[`docker-compose.yml`](docker-compose.yml) publishes the container on host port
-`8080` — point Pangolin (or any reverse proxy) at that.
-
-TLS is terminated at the edge by Pangolin, so Caddy serves plain HTTP on `:80`
-inside the container (see [`Caddyfile`](Caddyfile)). If you ever expose the
-container directly to the internet instead, change `:80` to your domain in the
-Caddyfile and map ports `80:80`/`443:443` in compose — Caddy will then obtain a
-Let's Encrypt certificate automatically.
-
-> **CI/CD:** intentionally not set up yet. When you want it, a workflow just
-> needs to run `hugo --minify`, then `npx pagefind --site public`, then ship
-> `public/` to the box (rsync over SSH) or rebuild the container there.
+**One-time repo setup:** in **Settings → Pages**, set **Source** to
+**"GitHub Actions"**. The site URL and `baseURL` are detected automatically by
+the workflow, so no config change is needed if your username/repo changes.
 
 ## Adjusting section theme colours (one place)
 
@@ -126,9 +124,7 @@ assets/
   css/main.css      the whole design system
   js/site.js        nav, search modal, tag filter, hero constellation
 static/             favicon, pgp.asc  (replace pgp.asc with your real key)
-Dockerfile          multi-stage: Hugo build → Pagefind → Caddy
-docker-compose.yml  serves the container on :8080
-Caddyfile           static file server, cache + security headers
+.github/workflows/  deploy.yml — build + Pagefind + Pages deploy
 ```
 
 ## Notes
