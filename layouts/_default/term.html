@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="section-head wrap">
+  <p class="eyebrow mono">tag</p>
+  <h1 class="section-title">#{{ .Title }}</h1>
+  <p class="section-intro">{{ len .Pages }} post{{ if ne (len .Pages) 1 }}s{{ end }} tagged “{{ .Title }}”.</p>
+</section>
+
+<section class="post-list wrap">
+  {{ range .Pages.ByDate.Reverse }}
+    <article class="post-card">
+      <a class="post-card-link" href="{{ .RelPermalink }}">
+        <h2 class="post-card-title">{{ .Title }}</h2>
+        <p class="post-card-desc">{{ .Description | default .Summary }}</p>
+        <div class="post-card-meta">
+          <span class="pill pill-{{ .Section }}">{{ partial "section-label.html" . }}</span>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+        </div>
+      </a>
+    </article>
+  {{ end }}
+</section>
+{{ end }}

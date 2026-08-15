@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    container_name: byte-and-dune
+    restart: unless-stopped
+    ports:
+      # host:container — Pangolin (or another reverse proxy) points here.
+      # Change the host port if 8080 is taken on your box.
+      - "8080:80"
+    # If you later expose Caddy directly on 80/443 for automatic HTTPS,
+    # swap the ports above for "80:80" and "443:443" and edit the Caddyfile.

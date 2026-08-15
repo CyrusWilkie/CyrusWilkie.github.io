@@ -1,0 +1,3 @@
+{{- /* Short pill label for a page's section, read from that section's _index.md. */ -}}
+{{- $sect := .Site.GetPage (printf "/%s" .Section) -}}
+{{- with $sect -}}{{ .Params.label | default .Title }}{{- else -}}{{ .Section | title }}{{- end -}}

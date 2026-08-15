@@ -1,0 +1,48 @@
+# User GitHub Pages site → served at the domain root (no subpath).
+# If your GitHub username isn't "cyruswilkie", change this to match your repo.
+baseURL = "https://cyruswilkie.github.io/"
+languageCode = "en-AU"
+title = "byte & dune"
+enableRobotsTXT = true
+
+[params]
+tagline = "Cybersecurity write-ups, CTF walkthroughs and home-lab experiments."
+author = "Cyrus"
+
+[taxonomies]
+tag = "tags"
+
+[markup]
+  [markup.highlight]
+  style = "monokai"
+  lineNos = false
+
+[[menus.main]]
+name = "Home"
+pageRef = "/"
+weight = 10
+
+[[menus.main]]
+name = "Security"
+pageRef = "/security"
+weight = 20
+
+[[menus.main]]
+name = "CTFs"
+pageRef = "/ctfs"
+weight = 30
+
+[[menus.main]]
+name = "Home lab"
+pageRef = "/homelab"
+weight = 40
+
+[[menus.main]]
+name = "Misc"
+pageRef = "/misc"
+weight = 50
+
+[[menus.main]]
+name = "About"
+pageRef = "/about"
+weight = 60

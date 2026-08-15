@@ -1,0 +1,15 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>© {{ now.Year }} {{ .Site.Params.author | default .Site.Title }} · <span class="mono">built with Hugo, served from the desert</span></p>
+    <p class="footer-links">
+      <a href="{{ "/about" | relURL }}">About</a>
+      <a href="https://github.com/cyruswilkie">GitHub</a>
+    </p>
+  </div>
+</footer>
+
+{{ $js := resources.Get "js/site.js" }}
+{{ with $js }}
+  {{ if hugo.IsProduction }}{{ $js = . | minify | fingerprint }}{{ end }}
+  <script src="{{ $js.RelPermalink }}" defer></script>
+{{ end }}

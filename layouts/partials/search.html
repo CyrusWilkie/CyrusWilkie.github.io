@@ -1,0 +1,19 @@
+<div class="search-modal" data-search-modal hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search">
+    <button class="search-close" aria-label="Close search" data-search-close>×</button>
+    <div id="search"></div>
+  </div>
+</div>
+
+{{ if hugo.IsProduction }}
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+{{ end }}
+<script>
+  window.__initPagefind = function () {
+    if (window.__pfDone || typeof PagefindUI === "undefined") return;
+    window.__pfDone = true;
+    new PagefindUI({ element: "#search", showSubResults: true, showImages: false });
+  };
+</script>

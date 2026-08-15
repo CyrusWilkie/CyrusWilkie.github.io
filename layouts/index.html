@@ -1,0 +1,50 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="hero-sky" aria-hidden="true">
+    <div class="stars" data-stars>
+      {{ range $i := (seq 90) }}
+        {{ $top := mul (mod (mul $i 37) 62) 1 }}
+        {{ $left := mod (mul $i 53) 100 }}
+        {{ $delay := div (float (mod (mul $i 17) 40)) 10.0 }}
+        {{ $dur := add 2.4 (div (float (mod (mul $i 29) 30)) 10.0) }}
+        {{ $size := add 1 (mod $i 2) }}
+        <span class="star" style="top:{{ $top }}%;left:{{ $left }}%;width:{{ $size }}px;height:{{ $size }}px;animation-delay:{{ $delay }}s;animation-duration:{{ $dur }}s"></span>
+      {{ end }}
+    </div>
+    <canvas class="constellation" data-constellation></canvas>
+    <svg class="dunes" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Back-to-front: two lit warm ridges, then a foreground silhouette in
+           the page background colour so the hero resolves seamlessly into the
+           feed below (no hard seam). --section-bg is mirrored here. -->
+      <path fill="#8a3a1a" d="M0,176 C240,120 480,224 720,192 C960,160 1200,220 1440,176 L1440,320 L0,320 Z"/>
+      <path fill="#5e2410" d="M0,232 C280,184 520,264 780,232 C1040,200 1240,260 1440,228 L1440,320 L0,320 Z"/>
+      <path class="dune-front" d="M0,280 C300,244 560,308 820,284 C1080,262 1260,300 1440,282 L1440,320 L0,320 Z"/>
+    </svg>
+  </div>
+
+  <div class="wrap hero-content">
+    <p class="eyebrow mono">whoami</p>
+    <h1 class="hero-title">{{ .Site.Title }}</h1>
+    <p class="hero-tagline">{{ .Params.tagline | default .Site.Params.tagline }}</p>
+    {{ with (index (where .Site.RegularPages "Section" "!=" "") 0) }}
+      <a class="cta" href="{{ .RelPermalink }}">Read the latest post →</a>
+    {{ end }}
+  </div>
+</section>
+
+<section class="feed wrap">
+  <h2 class="feed-heading">Latest across the blog</h2>
+  <ul class="feed-list">
+    {{ range first 12 (where .Site.RegularPages "Section" "!=" "") }}
+      {{ $theme := .Section }}
+      <li class="feed-row">
+        <a class="feed-link" href="{{ .RelPermalink }}">
+          <span class="pill pill-{{ $theme }}">{{ partial "section-label.html" . }}</span>
+          <span class="feed-title">{{ .Title }}</span>
+          <time class="feed-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

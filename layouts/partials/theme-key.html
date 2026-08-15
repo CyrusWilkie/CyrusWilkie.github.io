@@ -1,0 +1,9 @@
+{{- /* Single source for mapping a page to its section theme key.
+       Home and the About page fall back to the "home" theme. */ -}}
+{{- if .IsHome -}}
+home
+{{- else if .Section -}}
+{{ .Section }}
+{{- else -}}
+home
+{{- end -}}

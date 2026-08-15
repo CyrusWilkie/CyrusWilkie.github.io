@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article class="post wrap" data-pagefind-body>
+  <header class="post-header">
+    <p class="eyebrow mono">{{ with .Site.GetPage (printf "/%s" .Section) }}{{ .Params.eyebrow }}{{ end }}</p>
+    <h1 class="post-title" data-pagefind-meta="title">{{ .Title }}</h1>
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+      <span class="post-section">in <a href="{{ (.Site.GetPage (printf "/%s" .Section)).RelPermalink }}">{{ partial "section-label.html" . }}</a></span>
+    </div>
+    {{ with .Params.tags }}
+      <div class="post-tags">
+        {{ range . }}<a class="mini-tag" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}
+      </div>
+    {{ end }}
+  </header>
+
+  <div class="post-body">
+    {{ .Content }}
+  </div>
+
+  <footer class="post-footer">
+    <a class="back-link" href="{{ (.Site.GetPage (printf "/%s" .Section)).RelPermalink }}">← back to {{ partial "section-label.html" . }}</a>
+  </footer>
+</article>
+{{ end }}

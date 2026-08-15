@@ -1,0 +1,32 @@
+{{ define "main" }}
+<article class="about wrap" data-pagefind-body>
+  <div class="about-head">
+    <div class="avatar" aria-hidden="true">{{ substr (.Params.handle | default "?") 0 1 | upper }}</div>
+    <div>
+      <h1 class="about-name">{{ .Params.handle | default .Title }}</h1>
+      <p class="about-role">{{ .Params.role }}</p>
+    </div>
+  </div>
+
+  <div class="about-bio">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.badges }}
+    <div class="badge-row">
+      {{ range . }}<span class="badge">{{ . }}</span>{{ end }}
+    </div>
+  {{ end }}
+
+  {{ with .Params.contacts }}
+    <div class="contact-row">
+      {{ range . }}
+        <a class="contact" href="{{ .url }}">
+          <span class="contact-icon">{{ partial "icon.html" .icon }}</span>
+          <span>{{ .label }}</span>
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
+</article>
+{{ end }}
