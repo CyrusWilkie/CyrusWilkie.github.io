@@ -57,6 +57,30 @@ New posts appear automatically in:
    first), and
 3. the Pagefind search index (rebuilt on every production build).
 
+### Posts with images (page bundles)
+
+A text-only post is a single `.md` file. A post **with images** becomes a
+folder (a Hugo *leaf bundle*) that holds the post and its images together:
+
+```
+content/security/attacking-kubernetes-part-1/
+├── index.md          # the post (front matter + body)
+├── 3.15.38.png       # images live next to the post that uses them
+└── 3.30.16.png
+```
+
+Reference an image from `index.md` with a **relative** path — just the filename:
+
+```markdown
+![Descriptive alt text](3.15.38.png)
+```
+
+The URL is unchanged (`/security/attacking-kubernetes-part-1/`), and Hugo
+publishes the images alongside the page automatically. Each post owns its own
+images, so this scales cleanly as more image-heavy posts are added — no shared
+dump folder to manage. Images are capped to the content width and get a rounded
+border via `.post-body img` in [`assets/css/main.css`](assets/css/main.css).
+
 ## Building for production
 
 ```bash

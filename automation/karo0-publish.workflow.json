@@ -1,0 +1,184 @@
+{
+  "name": "Karo0 — Notion to GitHub publish",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [ { "field": "minutes", "minutesInterval": 5 } ] }
+      },
+      "id": "sched-1",
+      "name": "Every 5 min",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [ 240, 300 ]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": "YOUR_NOTION_DB_ID",
+        "returnAll": true,
+        "filters": {
+          "conditions": [
+            {
+              "key": "Status|select",
+              "condition": "equals",
+              "selectValue": "Ready to publish"
+            }
+          ]
+        }
+      },
+      "id": "notion-get-1",
+      "name": "Notion: Get Database Pages",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [ 460, 300 ],
+      "notes": "Attach your Notion credential. Filter Status = Ready to publish."
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.notion.com/v1/blocks/{{ $json.id }}/children?page_size=100",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Notion-Version", "value": "2022-06-28" }
+          ]
+        }
+      },
+      "id": "notion-blocks-1",
+      "name": "Notion: Get Blocks",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [ 680, 300 ],
+      "notes": "Auth: use your Notion credential (predefined) or a Bearer header. Header Notion-Version required."
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Notion blocks -> Markdown. See PUBLISHING.md §4a.\nconst blocks = $json.results || [];\nfunction rt(arr = []) {\n  return arr.map((t) => {\n    let s = t.plain_text ?? (t.text && t.text.content) ?? \"\";\n    const a = t.annotations || {};\n    if (a.code) s = \"`\" + s + \"`\";\n    if (a.bold) s = \"**\" + s + \"**\";\n    if (a.italic) s = \"*\" + s + \"*\";\n    if (a.strikethrough) s = \"~~\" + s + \"~~\";\n    const href = t.href || (t.text && t.text.link && t.text.link.url);\n    if (href) s = \"[\" + s + \"](\" + href + \")\";\n    return s;\n  }).join(\"\");\n}\nconst lines = [];\nfor (const b of blocks) {\n  const t = b.type;\n  const d = b[t] || {};\n  switch (t) {\n    case \"heading_1\": lines.push(\"# \" + rt(d.rich_text), \"\"); break;\n    case \"heading_2\": lines.push(\"## \" + rt(d.rich_text), \"\"); break;\n    case \"heading_3\": lines.push(\"### \" + rt(d.rich_text), \"\"); break;\n    case \"paragraph\": lines.push(rt(d.rich_text), \"\"); break;\n    case \"bulleted_list_item\": lines.push(\"- \" + rt(d.rich_text)); break;\n    case \"numbered_list_item\": lines.push(\"1. \" + rt(d.rich_text)); break;\n    case \"to_do\": lines.push(\"- [\" + (d.checked ? \"x\" : \" \") + \"] \" + rt(d.rich_text)); break;\n    case \"quote\": lines.push(\"> \" + rt(d.rich_text), \"\"); break;\n    case \"code\": lines.push(\"```\" + (d.language || \"\"), rt(d.rich_text), \"```\", \"\"); break;\n    case \"divider\": lines.push(\"---\", \"\"); break;\n    default: if (d.rich_text) lines.push(rt(d.rich_text), \"\");\n  }\n}\nconst markdown = lines.join(\"\\n\").replace(/\\n{3,}/g, \"\\n\\n\").trim() + \"\\n\";\nreturn { markdown };"
+      },
+      "id": "code-md-1",
+      "name": "Blocks to Markdown",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [ 900, 300 ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:11434/api/chat",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "content-type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"qwen3.6\",\n  \"stream\": false,\n  \"think\": false,\n  \"options\": { \"temperature\": 0.2 },\n  \"messages\": [\n    { \"role\": \"system\", \"content\": \"You are a copy editor for a technical cybersecurity blog. Correct only spelling, grammar, and punctuation errors in the Markdown the user sends. Rules: (1) Preserve the Markdown structure exactly. (2) NEVER change anything inside fenced code blocks or inline code spans - no edits to commands, flags, code, hostnames, hex, or payloads. (3) Keep technical terms, product names, and CTF flag formats as written. (4) Do not rewrite, reword, restructure, add, or remove content - fix mistakes only. (5) Return ONLY the corrected Markdown, with no preamble, no <think> reasoning, and no surrounding code fence.\" },\n    { \"role\": \"user\", \"content\": {{ JSON.stringify($json.markdown) }} }\n  ]\n}"
+      },
+      "id": "ollama-1",
+      "name": "Ollama: Proofread",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [ 1120, 300 ],
+      "notes": "Local Ollama chat API, no auth. If n8n is in Docker, change localhost to host.docker.internal or the host LAN IP, and run Ollama with OLLAMA_HOST=0.0.0.0. Set model to your `ollama list` tag."
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Assemble front matter + path. See PUBLISHING.md §4c.\nconst resp = $json;\nconst orig = $('Blocks to Markdown').item.json.markdown;\nlet proofed = (resp.message && resp.message.content) || \"\";\nproofed = proofed.replace(/<think>[\\s\\S]*?<\\/think>/gi, \"\").trim();\nif (!proofed) proofed = orig;\nproofed = proofed.trimEnd() + \"\\n\";\nconst page = $('Notion: Get Database Pages').item.json;\nconst P = page.properties;\nconst title = P.Title.title.map((t) => t.plain_text).join(\"\");\nconst sectionLabel = (P.Section.select && P.Section.select.name) || \"Misc\";\nconst tags = (P.Tags.multi_select || []).map((t) => t.name);\nconst description = (P.Description.rich_text || []).map((t) => t.plain_text).join(\"\");\nconst slugProp = ((P.Slug && P.Slug.rich_text) || []).map((t) => t.plain_text).join(\"\").trim();\nconst date = (P[\"Publish date\"] && P[\"Publish date\"].date && P[\"Publish date\"].date.start) || new Date().toISOString().slice(0, 10);\nconst folderMap = { \"Security\": \"security\", \"CTFs\": \"ctfs\", \"Home lab\": \"homelab\", \"Misc\": \"misc\" };\nconst section = folderMap[sectionLabel] || \"misc\";\nconst slug = (slugProp || title).toLowerCase().replace(/[^a-z0-9]+/g, \"-\").replace(/(^-|-$)/g, \"\");\nconst fm = [\n  \"---\",\n  \"title: \" + JSON.stringify(title),\n  \"date: \" + date,\n  \"tags: [\" + tags.map((t) => JSON.stringify(t)).join(\", \") + \"]\",\n  \"section: \" + section,\n  \"description: \" + JSON.stringify(description),\n  \"---\",\n  \"\"\n].join(\"\\n\");\nconst fileContent = fm + proofed;\nreturn {\n  path: \"content/\" + section + \"/\" + slug + \".md\",\n  slug: slug,\n  section: section,\n  branch: \"post-\" + slug,\n  commitMessage: \"Add post: \" + title,\n  contentBase64: Buffer.from(fileContent, \"utf8\").toString(\"base64\"),\n  pageId: page.id\n};"
+      },
+      "id": "code-assemble-1",
+      "name": "Assemble file",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [ 1340, 300 ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "m1", "name": "mode", "value": "auto", "type": "string" }
+          ]
+        }
+      },
+      "id": "set-mode-1",
+      "name": "Publish mode",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [ 1560, 300 ],
+      "notes": "Set mode to 'auto' (commit to master) or 'pr' (open a Pull Request)."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "conditions": [
+            {
+              "leftValue": "={{ $json.mode }}",
+              "rightValue": "auto",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ]
+        }
+      },
+      "id": "if-mode-1",
+      "name": "Auto or PR?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [ 1780, 300 ]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.github.com/repos/cyruswilkie/cyruswilkie.github.io/contents/{{ $json.path }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Accept", "value": "application/vnd.github+json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\": {{ JSON.stringify($json.commitMessage) }},\n  \"content\": \"{{ $json.contentBase64 }}\",\n  \"branch\": \"master\"\n}"
+      },
+      "id": "gh-put-1",
+      "name": "GitHub: Commit to master",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [ 2000, 220 ],
+      "notes": "AUTO mode. Auth: GitHub PAT via Bearer header/credential. For updates to an existing file, GET its sha first and add it to the body."
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": "={{ $json.pageId }}",
+        "propertiesUi": {
+          "propertyValues": [
+            { "key": "Status|select", "selectValue": "Published" }
+          ]
+        }
+      },
+      "id": "notion-update-1",
+      "name": "Notion: Mark Published",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [ 2220, 220 ],
+      "notes": "Only wired for the AUTO branch here. For PR mode, mark 'Pending review' instead and flip to Published on merge."
+    }
+  ],
+  "connections": {
+    "Every 5 min": { "main": [ [ { "node": "Notion: Get Database Pages", "type": "main", "index": 0 } ] ] },
+    "Notion: Get Database Pages": { "main": [ [ { "node": "Notion: Get Blocks", "type": "main", "index": 0 } ] ] },
+    "Notion: Get Blocks": { "main": [ [ { "node": "Blocks to Markdown", "type": "main", "index": 0 } ] ] },
+    "Blocks to Markdown": { "main": [ [ { "node": "Ollama: Proofread", "type": "main", "index": 0 } ] ] },
+    "Ollama: Proofread": { "main": [ [ { "node": "Assemble file", "type": "main", "index": 0 } ] ] },
+    "Assemble file": { "main": [ [ { "node": "Publish mode", "type": "main", "index": 0 } ] ] },
+    "Publish mode": { "main": [ [ { "node": "Auto or PR?", "type": "main", "index": 0 } ] ] },
+    "Auto or PR?": { "main": [ [ { "node": "GitHub: Commit to master", "type": "main", "index": 0 } ], [] ] },
+    "GitHub: Commit to master": { "main": [ [ { "node": "Notion: Mark Published", "type": "main", "index": 0 } ] ] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" }
+}

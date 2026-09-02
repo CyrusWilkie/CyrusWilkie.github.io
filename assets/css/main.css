@@ -370,6 +370,14 @@ a.mini-tag:hover { border-color: var(--section-accent); text-decoration: none; }
 .post-meta { display: flex; gap: 1rem; color: var(--section-muted); font-family: var(--font-mono); font-size: 0.85rem; flex-wrap: wrap; }
 .post-tags { margin-top: 0.9rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
 .post-body { font-size: 1.05rem; }
+.post-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.6rem auto;
+  border: 1px solid var(--section-border);
+  border-radius: var(--radius);
+}
 .post-body h2 { margin-top: 2.2rem; font-size: 1.5rem; }
 .post-body h3 { margin-top: 1.6rem; }
 .post-body pre {
