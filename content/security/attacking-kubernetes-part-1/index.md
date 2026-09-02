@@ -1,5 +1,5 @@
 ---
-title: "Setting Up and Attacking a Kubernetes Lab on Apple Silicon"
+title: "Setting Up and Attacking a Kubernetes Lab on Apple Silicon - Part 1"
 date: 2026-09-02
 tags: ["kubernetes", "pentesting", "containers"]
 section: security
